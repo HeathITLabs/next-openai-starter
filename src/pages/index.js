@@ -1,5 +1,4 @@
-import Head from 'next/head'
-// OpenAI Component 
+import Head from 'next/head';
 import OpenAIComponent from '../components/OpenAIComponent';
 
 export default function Home() {
@@ -17,5 +16,5 @@ export default function Home() {
         <OpenAIComponent />
       </main>
     </>
-  )
+  );
 }

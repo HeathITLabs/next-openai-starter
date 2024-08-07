@@ -4,12 +4,12 @@
   "private": true,
   "description": "A starter for Next.js with OpenAI",
   "author": {
-    "name": "Patrick Craig",
-    "url": "https://www.linkedin.com/in/patrickacraig/",
+    "name": "Heath IT Labs",
+    "url": "https://heathitlabs.com",
     "license": "MIT"
   },
   "scripts": {
-    "dev": "DEBUG=app,app:* next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

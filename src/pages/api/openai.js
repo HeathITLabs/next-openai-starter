@@ -7,8 +7,9 @@ export default async function handler(req, res) {
     console.log(prompt);
 
     try {
-      const response = await axios.post('http://localhost:1234/v1/completions', {
+      const response = await axios.post('http://localhost:4891/v1/completions', {
         prompt,
+        model:'Hermes',
         max_tokens: 150,
         n: 1,
         stop: null,

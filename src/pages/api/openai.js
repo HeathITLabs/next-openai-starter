@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    console.log('openai.js reached');
     const { prompt } = req.body;
     console.log(prompt);
 

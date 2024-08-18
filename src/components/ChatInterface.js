@@ -35,9 +35,9 @@ export default function ChatInterface() {
       const response = await fetch('/api/openai', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt: message })
+        body: JSON.stringify({ prompt: message }),
       });
       const data = await response.json();
       return data;
@@ -54,53 +54,36 @@ export default function ChatInterface() {
   const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark');
-      document.body.classList.add('bg-background', 'text-foreground');
-      document.body.classList.remove('bg-white', 'text-black');
+      document.body.classList.add('dark');
     } else {
       setTheme('light');
-      document.body.classList.add('bg-white', 'text-black');
-      document.body.classList.remove('bg-background', 'text-foreground');
+      document.body.classList.remove('dark');
     }
   };
 
   return (
-    <div className="flex flex-col w-full h-full bg-background text-foreground p-4">
-      <div id='header' className="bg-card rounded-t-lg shadow-md">
+    <div className="min-h-screen flex flex-col bg-background text-foreground p-4">
+      <div className="flex items-center justify-between p-4 bg-card rounded-t-lg shadow-md">
         <h1 className="text-xl font-semibold">Chat Application</h1>
-        <div className="" id='menu'>
+        <div className="relative">
           <button
             id="menu-button"
             className="p-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80"
             onClick={toggleMenu}
           >
-            <img aria-hidden="true" alt="hamburger-menu" src="" />
+            ≡
           </button>
           {menuVisible && (
-            <div
-              id="menu"
-              className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg"
-            >
-              <button
-                className="block px-4 py-2 text-foreground hover:bg-muted"
-                onClick={toggleTheme}
-              >
-                Toggle Theme
-              </button>
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">
-                Account
-              </a>
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">
-                Settings
-              </a>
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">
-                Log In / Log Out
-              </a>
+            <div id="menu" className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg">
+              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Account</a>
+              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Settings</a>
+              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Log In / Log Out</a>
             </div>
           )}
         </div>
       </div>
       <div className="flex flex-1 overflow-hidden">
-        <div id='previousSessions' className="w-1/4 p-4 bg-card rounded-l-lg shadow-md overflow-y-auto">
+        <div className="w-1/4 p-4 bg-card rounded-l-lg shadow-md overflow-y-auto">
           <h2 className="text-lg font-semibold mb-4">Previous Sessions</h2>
           <div id="previous-sessions" className="space-y-2">
             {previousSessions.map((session) => (
@@ -133,11 +116,11 @@ export default function ChatInterface() {
               </div>
             ))}
           </div>
-          <div id='chatInterface' className="">
+          <div className="mt-4 flex">
             <input
               id="user-input"
               type="text"
-              className="p-2 border border-input rounded-l-lg focus:outline-none focus:ring focus:ring-primary"
+              className="flex-1 p-2 border border-input rounded-l-lg focus:outline-none focus:ring focus:ring-primary"
               placeholder="Type your message..."
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
@@ -154,4 +137,7 @@ export default function ChatInterface() {
       </div>
     </div>
   );
+  
 }
+
+

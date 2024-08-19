@@ -62,7 +62,7 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground p-4">
+    <div className="min-h-screen flex flex-col bg-background text-foreground p-4" >
       <div className="flex items-center justify-between p-4 bg-card rounded-t-lg shadow-md">
         <h1 className="text-xl font-semibold">Chat Application</h1>
         <div className="relative">

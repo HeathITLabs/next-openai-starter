@@ -2,7 +2,7 @@ import ChatInterface from '../components/ChatInterface';
 
 export default function Home() {
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <div className="min-h-screen w-full">
       <ChatInterface />
     </div>
   );

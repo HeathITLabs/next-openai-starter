@@ -32,7 +32,7 @@ export default function ChatInterface() {
 
   const getModelResponse = async (message) => {
     try {
-      const response = await fetch('/api/openai', {
+      const response = await fetch('/api/localllm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,12 @@ export default function ChatInterface() {
         body: JSON.stringify({ prompt: message }),
       });
       const data = await response.json();
-      return data;
+      if (response.ok) {
+        return data.text;
+      } else {
+        console.error('Error from API:', data.message);
+        return `Error: ${data.message}`;
+      }
     } catch (error) {
       console.error('Error fetching model response:', error);
       return 'Error fetching model response';

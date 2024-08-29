@@ -1,11 +1,10 @@
 html {
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  flex: 1;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: flex;
   font-size: 1em;
   box-sizing: border-box;
   background: radial-gradient(
@@ -13,4 +12,135 @@ html {
     rgba(164, 219, 244, 0.5),
     rgba(140, 151, 254, 0.72)
   );
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 2px solid #000;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 12rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.previous-sessions {
+  width: 25%;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 2px solid #000;
+  overflow-y: auto;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.session-item {
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.session-item:hover {
+  background-color: #0056b3;
+}
+
+.main-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 2px solid #000;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  border: 2px solid #000;
+  margin-bottom: 1rem;
+}
+
+.message-item {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.message-item.even {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.message-item.odd {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.user-input {
+  padding: 1rem;
+  border: 2px solid #000;
 }

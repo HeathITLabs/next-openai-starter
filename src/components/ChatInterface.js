@@ -67,78 +67,37 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground p-4" >
-      <div className="flex items-center justify-between p-4 bg-card rounded-t-lg shadow-md">
-        <h1 className="text-xl font-semibold">Chat Application</h1>
-        <div className="relative">
-          <button
-            id="menu-button"
-            className="p-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80"
-            onClick={toggleMenu}
-          >
-            ≡
-          </button>
-          {menuVisible && (
-            <div id="menu" className="absolute right-0 mt-2 w-48 bg-card rounded-lg shadow-lg">
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Account</a>
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Settings</a>
-              <a href="#" className="block px-4 py-2 text-foreground hover:bg-muted">Log In / Log Out</a>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="flex flex-1 overflow-hidden">
-        <div className="w-1/4 p-4 bg-card rounded-l-lg shadow-md overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-4">Previous Sessions</h2>
-          <div id="previous-sessions" className="space-y-2">
-            {previousSessions.map((session) => (
-              <div
-                key={session.id}
-                className="p-2 bg-secondary text-secondary-foreground rounded-lg cursor-pointer hover:bg-secondary/80"
-                onClick={() => handleSessionClick(session)}
-              >
-                {session.name}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex-1 flex flex-col p-4 bg-card rounded-r-lg shadow-md">
+    <div className="container">
+      <div className="message-container" ref={chatMessagesRef}>
+        {chatMessages.map((message, index) => (
           <div
-            id="chat-messages"
-            className="flex-1 overflow-y-auto space-y-4"
-            ref={chatMessagesRef}
+            key={index}
+            className={`p-2 rounded-lg self-start ${
+              index % 2 === 0
+                ? 'bg-secondary text-secondary-foreground'
+                : 'bg-accent text-accent-foreground'
+            }`}
           >
-            {chatMessages.map((message, index) => (
-              <div
-                key={index}
-                className={`p-2 rounded-lg self-start ${
-                  index % 2 === 0
-                    ? 'bg-secondary text-secondary-foreground'
-                    : 'bg-accent text-accent-foreground'
-                }`}
-              >
-                {message}
-              </div>
-            ))}
+            {message}
           </div>
-          <div className="mt-4 flex">
-            <input
-              id="user-input"
-              type="text"
-              className="flex-1 p-2 border border-input rounded-l-lg focus:outline-none focus:ring focus:ring-primary"
-              placeholder="Type your message..."
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-            />
-            <button
-              id="submit-button"
-              className="bg-primary text-primary-foreground p-2 rounded-r-lg hover:bg-primary/80"
-              onClick={handleSendMessage}
-            >
-              Send
-            </button>
-          </div>
-        </div>
+        ))}
+      </div>
+      <div className="input-container">
+        <input
+          id="user-input"
+          type="text"
+          className="user-input"
+          placeholder="Type your message..."
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+        />
+        <button
+          id="submit-button"
+          className=""
+          onClick={handleSendMessage}
+        >
+          Send
+        </button>
       </div>
     </div>
   );
